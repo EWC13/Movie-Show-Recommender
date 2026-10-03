@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="page">
+  <h1>What are you in the mood for?</h1>
+
+  <form id="recommend-form">
+    <label for="mood_text">Describe your mood or what you want to watch</label>
+    <textarea id="mood_text" name="mood_text" rows="2"
+      placeholder="e.g. something cozy and funny, or mind-bending sci-fi"></textarea>
+
+    <fieldset>
+      <legend>Looking for</legend>
+      <label><input type="radio" name="media_type_override" value="" checked /> Either</label>
+      <label><input type="radio" name="media_type_override" value="movie" /> Movie</label>
+      <label><input type="radio" name="media_type_override" value="tv" /> TV show</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Recommendation mode</legend>
+      <label class="{% if not claude_available %}mode-disabled{% endif %}">
+        <input type="radio" name="mode" value="ai"
+          {% if claude_available %}checked{% else %}disabled{% endif %} />
+        AI-powered (Claude) &mdash; understands nuanced, free-form moods
+      </label>
+      <label>
+        <input type="radio" name="mode" value="keyword" {% if not claude_available %}checked{% endif %} />
+        Keyword-based &mdash; no API key needed, matches common mood/genre words
+      </label>
+      {% if not claude_available %}
+      <p class="mode-note">AI mode isn't configured on this server (no Anthropic API key set), so keyword mode is used.</p>
+      {% endif %}
+    </fieldset>
+
+    <fieldset>
+      <legend>Your streaming services (leave all unchecked to search everywhere)</legend>
+      <div class="provider-grid">
+        {% for provider in providers %}
+        <label class="provider-option">
+          <input type="checkbox" name="selected_provider_ids" value="{{ provider.provider_id }}" />
+          {% if provider.logo_url %}<img src="{{ provider.logo_url }}" alt="" />{% endif %}
+          <span class="provider-name">{{ provider.name }}</span>
+        </label>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <button type="submit">Find something to watch</button>
+  </form>
+
+  <p id="status-message" class="status-message"></p>
+  <div id="results" class="results-grid"></div>
+</main>
+
+<script src="/static/js/app.js"></script>
+{% endblock %}

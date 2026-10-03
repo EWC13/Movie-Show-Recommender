@@ -1,0 +1,212 @@
+body {
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  margin: 0;
+  background: #0f1115;
+  color: #e7e9ee;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #2c3038;
+  background: #1a1d24;
+  color: inherit;
+  resize: vertical;
+}
+
+fieldset {
+  border: 1px solid #2c3038;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+legend {
+  padding: 0 0.4rem;
+  color: #9aa1ad;
+}
+
+fieldset label {
+  display: block;
+  margin: 0.4rem 0;
+  font-size: 0.92rem;
+}
+
+fieldset label.mode-disabled {
+  color: #5c6270;
+  cursor: not-allowed;
+}
+
+.mode-note {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  color: #9aa1ad;
+}
+
+.provider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.provider-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 96px;
+  padding: 0.9rem 0.6rem;
+  border: 2px solid #2c3038;
+  border-radius: 10px;
+  background: #1a1d24;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+
+.provider-option:hover {
+  border-color: #4a5160;
+}
+
+.provider-option:has(input:checked) {
+  border-color: #5b8cff;
+  background: #202a40;
+}
+
+.provider-option:active {
+  transform: scale(0.98);
+}
+
+/* Visually hidden but still focusable/clickable for accessibility - the whole
+   card is the click target, so the native box doesn't need to be shown. */
+.provider-option input {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  accent-color: #5b8cff;
+  cursor: pointer;
+}
+
+.provider-option img {
+  height: 36px;
+  width: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.provider-name {
+  line-height: 1.2;
+}
+
+button[type="submit"] {
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  background: #5b8cff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.status-message {
+  color: #9aa1ad;
+  min-height: 1.2em;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.result-card {
+  background: #1a1d24;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-card img.poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: #2c3038;
+}
+
+.result-card .body {
+  padding: 0.6rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.result-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.result-card .overview {
+  font-size: 0.82rem;
+  color: #b7bcc6;
+  flex: 1;
+}
+
+.result-card .providers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.provider-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem 0.3rem 0.3rem;
+  border-radius: 999px;
+  background: #26304a;
+  border: 1px solid #3a4568;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #cfd8ff;
+  line-height: 1;
+}
+
+.provider-badge img {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.providers-empty {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #6b7280;
+}
