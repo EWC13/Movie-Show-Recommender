@@ -1,8 +1,6 @@
-# Mood-Based Movie/TV Recommender
+# Movie-Show-Recommender
 
-Describe your mood or the kind of movie/show you want to watch, pick which streaming
-services you subscribe to, and get back matching titles with the service they're
-available on.
+This repository hosts a project I made with the assistance of Claude Code. A mood based move/TV recommender web application with two different kinds of search utilizing AI (Claude) or key word search. The application allows for users to select the streaming service they want to search for movies on based on the top 10 streaming services from TMDB.
 
 ## Setup
 
