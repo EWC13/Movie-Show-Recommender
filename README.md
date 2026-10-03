@@ -44,3 +44,4 @@ pytest
 - Streaming availability defaults to the US region.
 - If you select zero streaming services, the app searches across all known
   providers instead of filtering by provider.
+- Do not need the Claude API key if user does not want to use the AI search, will just be restricted to key-word search
